@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Programming Quiz: Add Candidate</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/send-candidate-quiz.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!-- This is the header section for the page -->
+    <div class="header col-12">
+        <h1>Software Programming Quiz</h1>
+    </div>
+    <div class="row">
+        <div class="col-3 menu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/profile">Account Profile</a></li>
+                    <li><a href="/create-quiz">Create a Quiz</a></li>
+                    <li><a href="/edit-quiz">View Quizzes</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+        </div>
+        <!-- Candidate Form -->
+        <div class="candidate col-9">
+            <h1>Send Quiz to Candidate</h1>
+            <form name="send-candidate-quiz" action="/send-candidate-quiz" method="post">
+                <div>
+                    <label for="candidate_email">Candidate Email</label>
+                    <input type="email" name="candidate_email" placeholder="Max 30 Characters" id="candidate_email" maxlength="30" required>
+                </div>
+                <div>
+                    <label for="nickname">Candidate Name / Nick Name</label>
+                    <input type="text" name="nickname" placeholder="Max 20 Characters" id="nickname" maxlength="20" required>
+                </div>
+                <!-- quiz expiration date -->
+                <div>
+                    <label for="quiz_expiration_date">Quiz Expiration Date</label>
+                    <input type="datetime-local" name="quiz_expiration_date" id="quiz_expiration_date">
+                </div>
+                <!-- Quiz -->
+                <div>
+                    <script>let quizzes = <%- JSON.stringify(quizzes) %>  </script>
+                    <label for="quiz">Select Quiz</label>
+                    <select name="quiz" id="quiz">
+                        <option value='{"quiz_id":1231812150,"quiz_version_id":2}'>NAME - Version Number</option>
+                    </select>
+                </div>
+
+                <!-- submit -->
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/scripts/candidate_dropdown.js"></script>
+</body>
+
+</html>

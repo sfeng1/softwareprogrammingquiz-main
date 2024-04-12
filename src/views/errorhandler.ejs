@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Error</title>
+    <meta name="description" content="For catching errors.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- This is the header section for the page -->
+    <div class="header">
+        <h1>Software Programming Quiz</h1>
+    </div>
+
+    <div class="row container-fluid">
+        <div class="col-3 menu">
+            <ul>
+                <% if (!loggedin) { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/create_account">Create Account</a></li>
+                    <li onclick="goBack()">Go Back</li>
+                <% } else { %>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/profile">Account Profile</a></li>
+                    <li><a href="/create-quiz">Create a Quiz</a></li>
+                    <li><a href="/edit-quiz">View Quizzes</a></li>
+                    <li><a href="/send-candidate-quiz">Send Quiz to Candidate</a></li>
+                    <li onclick="goBack()">Go Back</li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="col-9 error">
+            <div class="center">  
+                <h1>An Error Has Occurred</h1>
+                <p>Choose to navigate back and try again.</p>
+           </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</html>

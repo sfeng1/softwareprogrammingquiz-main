@@ -1,0 +1,278 @@
+/************************************************************************
+Project: Software Programming Quiz
+Author: Li, Feng, Tauiliili
+Created: 2024-01-22
+Last Updated: 2024-02-17
+************************************************************************/
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+  }
+  
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  
+  a:visited { 
+    color: white;
+  }
+  
+  a:link {
+    text-decoration: none;
+  }
+  
+  
+  [class*="col-"] {
+    float: left;
+    padding: 15px;
+  }
+  
+  .header {
+    background-color: #1e90ff;
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .menu ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #1e90ff;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  
+  .menu li:hover {
+    background-color: #0099cc;
+  }
+  
+  
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  
+  
+  /************************************************************************
+  Login / Account / Profile page specific CSS
+  ************************************************************************/
+  .login {
+    width: 500px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+  }
+  
+  .login h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 0 0;
+  }
+  
+  .login h2 {
+    text-align: center;
+    color: #1e90ff;
+    font-size: 20px;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+  }
+  
+  .login rowbox {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  .login form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+  }
+  
+  .login form label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #1e90ff;
+    color: #ffffff;
+  }
+  
+  .login form input[type="password"], .login form input[type="text"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+  
+  .login form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 15px;
+    background-color: #1e90ff;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.25s;
+  }
+  
+  .login form input[type="submit"]:hover {
+    background-color: rgb(84, 138, 219);
+      transition: background-color 0.25s;
+  }  
+  
+  .login #account {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background-color: #DC4405;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.25s;
+  }
+  
+  .login #account :hover {
+    background-color: #d47850;
+      transition: background-color 0.25s;
+  }  
+  
+  .account {
+    width: 500px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+  }
+  
+  .account h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+  }
+  
+  .account p {
+    text-align: left;
+    color: grey;
+    margin: auto;
+    width: 80%;
+    font-size: 18px;
+    padding: 0px 0px 10px 0px
+  }
+  
+  .account rowbox {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    flex-flow: row wrap;
+  }
+  
+  .account form {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 0px;
+  }
+  
+  .account label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  .account input[type=text], input[type=password], input[type=email], input[type=tel], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+  
+  .account form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #1e90ff;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.25s;
+  }
+  
+  .account form input[type="submit"]:hover {
+    background-color: rgb(84, 138, 219);
+      transition: background-color 0.25s;
+  }  
+  
+  .account form span {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .account #savebtn {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #1e90ff;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    transition: background-color 0.25s;
+  }
+  
+  .account #savebtn:hover {
+    background-color: rgb(84, 138, 219);
+      transition: background-color 0.25s;
+  }  
+  
+  .account #delpro {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background-color: #DC4405;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+    transition: background-color 0.25s;
+  }
+  
+  .account #delpro:hover {
+    background-color: #d47850;
+      transition: background-color 0.25s;
+  }

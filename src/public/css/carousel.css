@@ -1,0 +1,66 @@
+.carousel.slide {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+
+#informationalCarousel {
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    /* width: 640px;
+    height: 450px; */
+}
+
+.carousel-inner {
+    height: 0;
+    padding-bottom: 75%;
+    /* this sets carousel aspect ratio */
+}
+
+.carousel-item {
+    position: absolute !important;
+    /* Bootstrap is insistent */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.carousel-item img {
+    height: 100%;
+    /* Bootstrap handles width already */
+    object-fit: contain;
+    /* 'cover' if you want to crop */
+    /* or 'contain' if you want stretch instead of crop */
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, .5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 0 0 10px 10px;
+    color: #fff;
+    text-align: left;
+    opacity: 0.75;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 15;
+    margin: 0;
+    padding: 10px 5px 5px 5px;
+    text-align: right;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Programming Quiz: Display Quiz Result</title>
+    <meta name="description"
+        content="The software programming quiz project is a website that allows employers to assess potential candidates.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- This is the header section for the page -->
+    <div class="header">
+        <h1>Software Programming Quiz</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6" id="candidate-details" >
+            <fieldset>
+                <table>
+                    <tr>
+                        <th>Candidate:</th>
+                        <td>
+                            <%= candidate_nickname %>
+                        </td>
+                    <tr>
+                    <tr>
+                        <th>Candidate Email:</th>
+                        <td>
+                            <%= candidate_email %>
+                        </td>
+                    </tr>
+                    <th>Score:</th>
+                    <td>
+                        <%= attempt_total_score %> / <%= quiz_max_score %>
+                    </td> 
+                    </tr>
+                    <tr>
+                        <th>Started:</th>
+                        <td><%= new Intl.DateTimeFormat('en-US',
+                                { hour: 'numeric', minute: 'numeric', second: 'numeric', 
+                                year: 'numeric', month: 'numeric', day: 'numeric', hour12: false,
+                                timeZone: 'America/Los_Angeles', timeZoneName: 'short' }).format(new
+                                Date(attempt_start_time)) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Completed:</th>
+                        <td><%= new Intl.DateTimeFormat('en-US',
+                                { hour: 'numeric', minute: 'numeric', second: 'numeric', 
+                                year: 'numeric', month: 'numeric', day: 'numeric', hour12: false,
+                                timeZone: 'America/Los_Angeles', timeZoneName: 'short' }).format(new
+                                Date(attempt_submit_time)) %>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 quiz-container">
+            <fieldset disabled="disabled">
+                <form id="quiz" name="quiz">
+                    <ol id="quiz-questions-answers">
+                        <script>let qstnresponse = <%- JSON.stringify(qstn_response) %></script>
+                    </ol>
+                </form>
+            </fieldset>
+            <!-- navigation button -->
+            <button type="button" class="nav-btn" onclick="goBack()">Go Back</button>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <script type="text/javascript" src="../scripts/quiz-display.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Programming Quiz: Ranked Quiz Results</title>
+    <meta name="description"
+        content="The software programming quiz project is a website that allows employers to assess potential candidates.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/ranked-quizzes.css">
+    <link rel="stylesheet" href="/css/sortable-table.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+            crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- This is the header section for the page -->
+    <div class="header">
+        <h1>Software Programming Quiz</h1>
+    </div>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <table id="quiz-details" class="quiz-details">
+                <tr>
+                    <th>Quiz ID:</th>
+                    <td>
+                        <%= quiz_details.quiz_id %>
+                    </td>
+                <tr>
+                <tr>
+                    <th>Verion Number:</th>
+                    <td>
+                        <%= quiz_details.quiz_version_id %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name:</th>
+                    <td>
+                        <%= quiz_details.name %>
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Description:</th>
+                    <td>
+                        <%= quiz_details.description %>
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Total Points:</th>
+                    <td>
+                        <%= quiz_details.total_points %>
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Time Limit:</th>
+                    <td>
+                        <%= quiz_details.time_limit %>
+                    </td> 
+                </tr>
+            </table>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    <div class="row">
+        <script>let candidateattempts = <%- JSON.stringify(candidate_attempts) %>  </script>
+        <div class="col-1"></div>
+        <div id="sortable-table-container" class="col-10 ranked-quiz-container">
+        <div class="col-1"></div>
+        </div>
+    </div>
+
+    <!-- navigation button -->
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-11"> 
+            <button type="button" class="nav-btn" onclick="history.back()">Go Back</button>
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.3/moment.min.js"></script> 
+    <script type="text/javascript" src="../scripts/ranked-quiz-results.js"></script>
+    <script type="text/javascript" src="https://www.w3.org/WAI/content-assets/wai-aria-practices/patterns/table/examples/js/sortable-table.js"></script>
+</body>
+
+</html>

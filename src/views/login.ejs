@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+
+		<title>Login</title>
+
+        <link rel="stylesheet" href="./css/account-profile.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	</head>
+    
+	<body>
+		<div class="header">
+			<h1>Software Programming Quiz</h1>
+		</div>
+		<div class="col-2 menu">
+			<div>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/create_account">Create Account</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<rowbox>
+
+			<div class="login">
+				<!-- titles -->
+				<h1>Software Programming Quiz</h1>
+				<h2> Please Login Below</h2>
+
+				<!-- form  -->
+				<form action="/auth" method="post">
+					
+					<div class = "column">
+					<!-- username -->
+					<rowbox>
+					<label for="username">
+						<i class="material-icons">person</i>
+					</label>
+
+					<input type="text" name="username" placeholder="Username" id="username" required>
+					</rowbox>
+
+					<!-- password -->
+					<rowbox>
+					<label for="password">
+						<i class="material-icons">lock</i>
+					</label>
+
+					<input type="password" name="password" placeholder="Password" id="password" required>
+					</rowbox>
+
+					<br>
+					<div style="text-align:center;"><a style="color:blue;" href = /forgot_password_login>Forgot Password</a></div>
+					<br>
+
+					</div>
+
+					<!-- error message display -->                
+					<span id="createError" style="color:red; font-weight: bold"></span>
+
+					<!-- submit -->
+					<input type="submit" value="Login">
+
+				</form>
+
+				<!-- create account -->
+				<button onclick="window.location.href='/create_account'" id = 'account' type="button">Create Account</button>
+			</div>
+		</rowbox>
+	</body>
+
+	<!-- display error messages that are passed in URL parameters -->
+	<script>
+        const currentUrl = window.location.search; // current URL
+        const urlParams = new URLSearchParams(currentUrl); // URL parameters
+        let err_code = urlParams.get('error'); // isolate error value 
+        const div = document.getElementById("createError");
+        switch (err_code) { 
+                case "fail":
+                    div.innerHTML = "No Account Found!";
+                    break;
+                  
+                case "fill":
+					div.innerHTML = "Please Fill All Required Fields!";
+					break;
+
+				case "question":
+					div.innerHTML = "Wrong Security Question Answer!";
+					break;
+
+              // add more error messages here
+
+                default:
+                    div.innerHTML = "";
+                    break;
+        };
+    </script>
+</html>

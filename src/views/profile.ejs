@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Software Programming Quiz</title>
+
+        <link rel="stylesheet" href="./css/account-profile.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+    
+	<body>
+        <rowbox>
+
+        <!-- Nav Bar -->
+		<div class="header">
+			<h1>Software Programming Quiz</h1>
+		</div>
+            <div class="col-2 menu">
+                <div>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/logout">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+		<div class="account">
+             
+            <h1>Account Profile</h1>
+            <br>
+            <p><b><ins>Username</ins></b></p>
+            <P id = username-fill> error </P>
+            <br>
+            <p><b><ins>Password</ins></b></p>
+            <P> ******** </P>
+            <br>
+            <p><b><ins>Account Name</ins></b></p>
+            <P id = name-fill> error </P>
+            <br>
+            <p><b><ins>Contact Email</ins></b></p>
+            <P id = email-fill> error </P>
+            <br>
+            <p><b><ins>State</ins></b></p>
+            <p id = state-fill> error </p>
+            <br>
+            <button type="button" id="savebtn" onclick="window.location.href='/profile_edit'">Edit</button>
+            <form name ="delete_profile" action="/delete_acct"  method="post">
+            <button type="submit" id="delpro">Delete</button>
+            </form>
+
+        </div>
+
+    </rowbox>
+	</body>
+
+    <script type="text/javascript">
+        var lookup_username = "<%= profile_data[0] %>";
+        var lookup_email = "<%= profile_data[2] %>";
+        var lookup_profile_name = "<%= profile_data[1] %>";
+        var lookup_state = "<%= profile_data[3] %>";
+
+        //fill fields with input parameter data
+        var div = document.getElementById("username-fill");
+        div.innerHTML = lookup_username;
+
+        var div = document.getElementById("name-fill");
+        div.innerHTML = lookup_profile_name;
+
+        var div = document.getElementById("state-fill");
+        div.innerHTML = lookup_state;
+
+        var div = document.getElementById("email-fill");
+        div.innerHTML = lookup_email;
+    </script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Programming Quiz: The Quiz</title>
+    <meta name="description"
+        content="The software programming quiz project is a website that allows employers to assess potential candidates.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/timeout-modal.css">
+</head>
+
+<body>
+    <!-- This is the header section for the page -->
+    <div class="header">
+        <h1>Software Programming Quiz</h1>
+    </div>
+
+
+    <% if (!isverified) { %>
+        <div class="row">
+            <div class="col-12">
+                <p class="centered-paragraph">To take this assessment, we need to confirm your identity. <br />Please
+                    enter your email address.</p>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form method="post">
+                    <div><label for="candidate_email">Email address:</label></div>
+                    <div><input type="text" id="candidate_email" name="candidate_email" required></div>
+                    <div><input type="submit" id="validate-candidate" name="Verify Email" value="Verify Email"></div>
+                </form>
+            </div>
+        </div>
+    <% } else if (!quizstarted) { %>
+        <div class="row">
+            <div class="col-12">
+                <p class="centered-paragraph">This assessment is for Candidate <b><%=candidate_nickname%></b>.
+                    <br />Once started, the timer will not pause and the assessment must be completed.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form method="post">
+                    <input type="submit" id="start-quiz" name="Start Quiz" value="Start Quiz">
+                </form>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="row">
+            <div class="center">
+                <script>let time = <%- JSON.stringify(time) %></script>
+                <div class="timer" id="timer">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 quiz-container">
+                <fieldset>
+                    <form id="quiz" name="quiz" method="post" action="/quiz-completed">
+                        <ol id="quiz-questions-answers"></ol>
+                        <div class="col-6">
+                            <input id="submit-quiz" type="submit" value="Submit">
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    <% } %>
+    <% if (error) { %>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="validation">
+                    <p>
+                        <%=errorMessage%>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+
+    <!-- Timeout Modal -->
+    <div id="timeout-modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content validation">
+            <div> 
+                <p class="center">Time has ran out for this assessment.<br/> Click SUBMIT to complete assessment.</p>
+            </div>
+            <div>
+                <button class="modal-submit" id="modalbtn-submit-quiz" form="quiz" type="submit" value="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Modals -->
+    <div id="warning-modal" class="modal">
+        // populated via js
+    </div>
+    
+    <script type="text/javascript" src="/scripts/quiz.js"></script>
+    <script type="text/javascript" src="/scripts/quiz-timer.js"></script>
+
+</body>
+
+</html>

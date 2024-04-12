@@ -1,0 +1,77 @@
+
+.candidate {
+    width: 500px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 10px auto;
+  }
+  
+  .candidate h1 {
+    text-align: center;
+    color: #3274d6;
+    font-size: 20px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+  }
+  
+  .candidate p {
+    text-align: left;
+    color: grey;
+    margin: auto;
+    width: 80%;
+    font-size: 18px;
+    padding: 0px 0px 10px 0px
+  }
+  
+  .candidate div {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    flex-flow: row wrap;
+  }
+  
+  .candidate form {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 0px;
+  }
+  
+  .candidate label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  .candidate input[type=text], input[type=datetime-local], input[type=email], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    font-size: 18px
+  }
+  
+  .candidate form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #1e90ff;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.25s;
+  }
+  
+  .candidate form input[type="submit"]:hover {
+    background-color: rgb(84, 138, 219);
+      transition: background-color 0.25s;
+  }  
+  
+  .candidate form span {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+  }

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editing A Quiz!</title>
+        <link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Software Programming Quiz</h1>
+        </div>
+
+        <div class="container-fluid">
+            <!-- Nav Bar -->
+            <div class="col-2 menu">
+                <div>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li onclick="history.back()">Go back</li>
+                        <li><a href="/create-quiz"></a>Create Quiz</li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <form id="edit-quiz" class="form-inline" method="POST" action="/edit-quiz">
+                <div class="container-fluid col-8">
+                    <div id="questions">
+                        <h1>Questions</h1>
+                        <% data.forEach(question => { %>
+                            <% if (question.question_type === "TF"){ %>
+                                <div class="form-label" id="question<%=question.question_number%>">
+                                    <h3 id="questionNum"> Question <%=question.question_number%> </h3>
+                                    
+                                    <b> Question </b>
+                                    <div class="div-margin">
+                                        <input type="text" class="form-control w-75" id="tf-question<%=question.question_number%>-question" 
+                                        name="question<%=question.question_number%>-question" placeholder="Enter Question Here" 
+                                        value="<%=question.question_text%>" required> 
+                                    </div>
+
+                                    <b> Question Points </b>
+                                    <div class="div-margin">
+                                        <input type="number" class="form-control w-25" id="tf-question<%=question.question_number%>-points" 
+                                        name="question<%=question.question_number%>-points" placeholder="Point(s)" 
+                                        value="<%=question.max_points%>" required> 
+                                    </div>
+
+                                    <b> Answer </b> <br>
+                                    <% if (answers[question.question_number - 1][0]['Points'] != "0") { %>
+                                        <div>
+                                            <input type="radio" id="tf-question<%=question.question_number%>-answer" name="question<%=question.question_number%>-answer" 
+                                            value="True" checked required>
+                                            <label for="question<%=question.question_number%>-answer"> T </label> 
+                                        </div>
+    
+                                        <div class="div-margin">
+                                            <input type="radio" id="tf-question<%=question.question_number%>-answer" name="question<%=question.question_number%>-answer" 
+                                            value="False" required>
+                                            <label for="question<%=question.question_number%>-answer"> F </label>
+                                        </div>
+                                        <% } else { %>
+                                        <div>
+                                            <input type="radio" id="tf-question<%=question.question_number%>-answer" name="question<%=question.question_number%>-answer" 
+                                            value="True" required>
+                                            <label for="question<%=question.question_number%>-answer"> T </label> 
+                                        </div>
+    
+                                        <div class="div-margin">
+                                            <input type="radio" id="tf-question<%=question.question_number%>-answer" name="question<%=question.question_number%>-answer" 
+                                            value="False" checked required>
+                                            <label for="question<%=question.question_number%>-answer"> F </label>
+                                        </div>
+                                        <% } %>
+                                        
+                                    <input type="hidden" aria-label="question_number" id="question_<%=question.question_number%>" name="question_number" value="<%=question.question_number%>">
+                                    <input type="hidden" aria-label="question_type" id="question<%=question.question_number%>-type" name="question_type" value="TF">
+                                    <button type="button" class="btn btn-danger del-btn" id="delete"> Delete Question </button>
+
+                                    <br>
+                                </div>
+                            <%} else if (question.question_type === "MC"){ %>
+                                <div class="form-label" id="question<%=question.question_number%>">
+                                    <h3 id="questionNum"> Question <%=question.question_number%> </h3>
+                                    <h4> Multiple Choice </h4>
+                        
+                                    <b> Question </b>
+                                    <div class="div-margin">
+                                        <input type="text" class="form-control w-75" id="mc-question<%=question.question_number%>-question" name="question<%=question.question_number%>-question" 
+                                        value="<%=question.question_text%>" placeholder="Enter Question here" required>
+                                    </div>
+                                    
+                                    <b> Choices </b>
+                                    <% for (let i=1; i<question.answer_quantity + 1; i++) { %>
+                                        <div class="input-div div-margin">
+                                            <input type="text" class="form-control w-50 input-margin" id="mc-question<%=question.question_number%>-option<%=i%>" name="question<%=question.question_number%>-option<%=i%>" 
+                                            value="<%=answers[question.question_number][i-1]['Choice']%>" placeholder="Choice <%=i%>" required>
+                                            <input type="number" class="form-control w-25" id="mc-question<%=question.question_number%>-choice<%=i%>-value" name="question<%=question.question_number%>-choice<%=i%>-value" 
+                                            value="<%=answers[question.question_number][i-1]['Points']%>" placeholder="Point Value" required>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <input type="hidden" aria-label="question_number" id="question_<%=question.question_number%>" name="question_number" value="<%=question.question_number%>">
+                                    <input type="hidden" aria-label="question_type" id="question<%=question.question_number%>-type" name="question_type" value="MC">
+                                    
+                                    <button type="button" class="btn btn-danger del-btn" id="delete"> Delete Question </button>
+                                </div>
+                            <%}else if (question.question_type === "CB"){ %>
+                                <div class="form-label" id="question<%=question.question_number%>">
+                                    <h3 id="questionNum"> Question <%=question.question_number%> </h3>
+                                    <h4> Select All that Apply </h4> 
+                        
+                                    <b> Question </b>
+                                    <div class="div-margin">
+                                        <input type="text" class="form-control w-75" id="cb-question<%=question.question_number%>-question" name="question<%=question.question_number%>-question" 
+                                        value="<%=question.question_text%>" placeholder="Enter Question here" required>
+                                    </div>
+                        
+                                    <label for="question<%=question.question_number%>-question"> </label>
+                                    
+                                    <b> Choices </b>
+                                    <% for (let i=1; i<question.answer_quantity + 1; i++) { %>
+                                        <div class="input-div div-margin">
+                                            <input type="text" class="form-control w-50 input-margin" id="cb-question<%=question.question_number%>-option1"name="question<%=question.question_number%>-option<%=i%>" 
+                                            value="<%=answers[question.question_number][i-1]['Choice']%>" placeholder="Choice <%=i%>" required>
+                                            <input type="number" class="form-control w-25" id="cb-question<%=question.question_number%>-choice<%=i%>-value" name="question<%=question.question_number%>-choice<%=i%>-value" 
+                                            value="<%=answers[question.question_number][i-1]['Points']%>" placeholder="Point Value" required>
+                                        </div>
+                                    <% } %>
+                        
+                                    <input type="hidden" aria-label="question_number" id="question_<%=question.question_number%>" name="question_number" value="<%=question.question_number%>">
+                                    <input type="hidden" aria-label="question_type" id="question<%=question.question_number%>-type" name="question_type" value="CB">
+                                    
+                                    <button type="button" class="btn btn-danger del-btn" id="delete"> Delete Question </button>
+                                    </div>
+                            <%}else if (question.question_type === "FR"){ %>
+                                    <div class="form-label" id="question<%=question.question_number%>"> 
+                                        <h3 id="questionNum"> Question <%=question.question_number%> </h3>
+                                        <h4> Free Respsonse </h4>
+                            
+                                        <b> Question </b>
+                                        <div class="div-margin">
+                                        <input type="text" class="form-control w-75" id="fr-question<%=question.question_number%>-question" name="question<%=question.question_number%>-question" 
+                                        value="<%=question.question_text%>" placeholder="Enter Question Here" required> 
+                                        </div>
+                                        
+                                        <button type="button" class="btn btn-danger del-btn" id="delete"> Delete Question </button>
+                            
+                                        <input type="hidden" aria-label="question_number" id="question_<%=question.question_number%>" name="question_number" value="<%=question.question_number%>">
+                                        <input type="hidden" aria-label="question_type" id="question<%=question.question_number%>-type" name="question_type" value="FR">
+                            
+                                    </div>
+                            <%} %>
+                        <% }); %>
+                    </div>
+
+                    <div class="add-btns" style="margin-top: 15px;">
+                        <button type="button" class="btn btn-primary btn-margin" id="add-tf"> Add T/F </button>
+                        <button type="button" class="btn btn-primary btn-margin" id="add-mc"> Add M/C </button>
+                        <button type="button" class="btn btn-primary btn-margin" id="add-select"> Add Select All </button>
+                        <button type="button" class="btn btn-primary btn-margin" id="add-freeform"> Add Free Response </button>
+                    </div>
+                    
+                </div>
+                    <div id="submit">
+                        <input type="hidden" name="quiz_id" value="<%=quiz_id%>">
+                        <button type="submit" class="btn btn-success" style="margin-top: 10px;"> Save Changes </button>
+                    </div>
+                </div>
+            </form>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script type="text/javascript" src="/scripts/quiz-editor.js"></script>
+    </body>
+</html>

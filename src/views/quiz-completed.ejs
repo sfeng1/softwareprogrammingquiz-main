@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Software Programming Quiz: Quiz Completed</title>
+    <meta name="description"
+        content="The software programming quiz project is a website that allows employers to assess potential candidates.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- This is the header section for the page -->
+    <div class="header">
+        <h1>Software Programming Quiz</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <% if (!completed_message) { %>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="centered-paragraph">Thank you!</p>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="row">
+                    <div class="col-12 success">
+                        <p class="centered-paragraph"><%= completed_message %> <br/> Thank you.</p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+</body>
+
+</html>
