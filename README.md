@@ -22,7 +22,7 @@ I was personally responsible for the following features:
 
 Video demo of my features: https://youtu.be/fzo2-XmXq5A
 
-Video demo of the entire website: https://youtu.be/GwEfNiuUQUg 
+Video demo of the entire website: https://youtu.be/GwEfNiuUQUg?t=876
 
 ## Functionality 
 Employers can sign up for an account and create a profile. With that account, they are able to
